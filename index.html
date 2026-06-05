@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PuntoNeutro.es — Política explicada sin sesgos</title>
+<meta name="description" content="Política explicada de forma clara, neutral y sin jerga. Para jóvenes que quieren entender qué pasa de verdad.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23C8F04A'/><text y='.9em' font-size='60' x='18'>●</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0D0D0D;--surface:#161616;--surface2:#1E1E1E;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
+  --text:#F0EDE6;--muted:#888580;--muted2:#5A5754;
+  --accent:#C8F04A;--accent-dim:rgba(200,240,74,0.12);
+  --red:#FF6B6B;--blue:#6BA4FF;--orange:#FFB347;--teal:#4DFFD2;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;min-height:100vh;overflow-x:hidden}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;border-bottom:1px solid var(--border);background:rgba(13,13,13,0.97);backdrop-filter:blur(10px);position:sticky;top:0;z-index:200}
+.logo{font-family:'Fraunces',serif;font-weight:900;font-size:1.3rem;color:var(--text);display:flex;align-items:center;gap:8px;letter-spacing:-0.5px}
+.logo-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block}
+.nav-links{display:flex;gap:1.5rem;list-style:none;font-size:13px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:color .2s;cursor:pointer}
+.nav-links a:hover{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.badge-live{background:rgba(255,107,107,0.15);border:1px solid rgba(255,107,107,0.3);color:var(--red);padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600;display:flex;align-items:center;gap:5px}
+.dot-live{width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.btn-nav{background:var(--accent);color:#0D0D0D;padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;border:none;font-family:'Plus Jakarta Sans',sans-serif;transition:opacity .2s}
+.btn-nav:hover{opacity:0.85}
+.tabs{display:flex;border-bottom:1px solid var(--border);padding:0 2rem;overflow-x:auto;gap:0}
+.tab{padding:0.85rem 1.25rem;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s;background:none;border-left:none;border-right:none;border-top:none;font-family:'Plus Jakarta Sans',sans-serif}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab:hover:not(.active){color:var(--text)}
+.panel{display:none;padding:2rem}
+.panel.active{display:block}
+.hero-grid{display:grid;grid-template-columns:1fr 340px;gap:1.5rem;margin-bottom:1.5rem}
+@media(max-width:800px){.hero-grid{grid-template-columns:1fr}.nav-links{display:none}.partidos-grid{grid-template-columns:1fr}.noticias-grid{grid-template-columns:1fr}.debate-opts{grid-template-columns:1fr}}
+.hero-main{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden}
+.hero-main::before{content:'';position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle,rgba(200,240,74,0.07) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.hero-main h1{font-family:'Fraunces',serif;font-size:2.8rem;font-weight:900;line-height:1.05;letter-spacing:-1.5px;margin-bottom:1rem;color:var(--text)}
+.hero-main h1 em{font-style:italic;color:var(--accent)}
+.hero-desc{font-size:14px;color:var(--muted);max-width:460px;line-height:1.7;margin-bottom:1.5rem}
+.search-bar{display:flex;gap:8px;margin-bottom:1.25rem}
+.search-input{flex:1;background:var(--surface2);border:1px solid var(--border2);border-radius:10px;padding:10px 14px;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;outline:none;transition:border-color .2s}
+.search-input:focus{border-color:var(--accent)}
+.search-input::placeholder{color:var(--muted2)}
+.btn-search{background:var(--accent);color:#0D0D0D;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;border:none;font-family:'Plus Jakarta Sans',sans-serif;white-space:nowrap}
+.level-select{display:flex;gap:6px;flex-wrap:wrap}
+.level-btn{padding:5px 12px;border-radius:100px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(--border2);background:transparent;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s}
+.level-btn.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent)}
+.hero-side{display:flex;flex-direction:column;gap:1rem}
+.trending-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.25rem;flex:1}
+.box-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.trend-item{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:opacity .2s}
+.trend-item:last-child{border-bottom:none}
+.trend-item:hover{opacity:0.7}
+.trend-num{font-size:11px;font-weight:700;color:var(--muted2);width:16px}
+.trend-text{font-size:13px;flex:1;line-height:1.3}
+.trend-tag{font-size:10px;padding:2px 8px;border-radius:100px;font-weight:600}
+.t-hot{background:rgba(255,107,107,0.15);color:var(--red)}
+.t-new{background:rgba(107,164,255,0.15);color:var(--blue)}
+.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stat-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center}
+.stat-num{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;color:var(--accent);line-height:1}
+.stat-label{font-size:11px;color:var(--muted);margin-top:4px}
+.ai-result{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-top:1.5rem;display:none}
+.ai-result.show{display:block}
+.ai-header{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+.ai-icon{width:32px;height:32px;border-radius:8px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:16px}
+.ai-title{font-size:13px;font-weight:600}
+.ai-subtitle{font-size:11px;color:var(--muted)}
+.ai-content{font-size:14px;line-height:1.75}
+.ai-content p{margin-bottom:0.75rem}
+.ai-content strong{color:var(--accent);font-weight:600}
+.level-tag{display:inline-flex;align-items:center;gap:4px;background:var(--accent-dim);color:var(--accent);font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;margin-bottom:0.75rem}
+.loading-dots{display:inline-flex;gap:4px;align-items:center;padding:8px 0}
+.loading-dots span{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:dotpulse 1.2s infinite}
+.loading-dots span:nth-child(2){animation-delay:.2s}
+.loading-dots span:nth-child(3){animation-delay:.4s}
+@keyframes dotpulse{0%,100%{opacity:0.3;transform:scale(0.8)}50%{opacity:1;transform:scale(1)}}
+.error-msg{color:var(--red);font-size:13px;padding:8px 0}
+.noticias-section{margin-bottom:2rem}
+.section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.section-title{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;letter-spacing:-0.3px}
+.see-all{font-size:12px;color:var(--accent);cursor:pointer;text-decoration:none;font-weight:500}
+.noticias-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.noticia-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.25rem;cursor:pointer;transition:all .2s;position:relative}
+.noticia-card:hover{border-color:var(--border2);transform:translateY(-1px)}
+.noticia-card:hover .card-arrow{opacity:1}
+.card-arrow{position:absolute;top:1rem;right:1rem;color:var(--muted);font-size:14px;opacity:0;transition:opacity .2s}
+.nc-tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 9px;border-radius:100px;margin-bottom:10px}
+.nc-economia{background:rgba(255,179,71,0.15);color:var(--orange)}
+.nc-vivienda{background:rgba(107,164,255,0.15);color:var(--blue)}
+.nc-clima{background:rgba(77,255,210,0.15);color:var(--teal)}
+.nc-sanidad{background:rgba(255,107,107,0.15);color:var(--red)}
+.nc-politica{background:rgba(200,240,74,0.15);color:var(--accent)}
+.noticia-card h4{font-size:14px;font-weight:600;line-height:1.4;margin-bottom:8px;padding-right:1rem}
+.noticia-meta{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted)}
+.meta-dot{width:3px;height:3px;border-radius:50%;background:var(--muted2)}
+.simplified-badge{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--accent);font-weight:500;margin-top:8px}
+.partidos-intro{text-align:center;padding:2rem 0 1.5rem;border-bottom:1px solid var(--border);margin-bottom:2rem}
+.partidos-intro h2{font-family:'Fraunces',serif;font-size:2rem;font-weight:900;letter-spacing:-1px;margin-bottom:0.5rem}
+.partidos-intro p{font-size:13px;color:var(--muted);max-width:480px;margin:0 auto}
+.partidos-topic-select{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:2rem}
+.topic-pill{padding:6px 16px;border-radius:100px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border2);background:transparent;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s}
+.topic-pill.active{background:var(--accent);color:#0D0D0D;border-color:var(--accent);font-weight:600}
+.topic-pill:hover:not(.active){color:var(--text)}
+.partidos-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.partido-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:border-color .2s}
+.partido-card:hover{border-color:var(--border2)}
+.partido-header{display:flex;align-items:center;gap:12px;margin-bottom:1rem}
+.partido-color{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;font-family:'Fraunces',serif}
+.pc-pp{background:rgba(0,100,200,0.2);color:#4A90E2}
+.pc-psoe{background:rgba(200,0,50,0.2);color:#E25470}
+.pc-vox{background:rgba(0,180,80,0.2);color:#4AE280}
+.pc-podemos{background:rgba(120,0,200,0.2);color:#A070E2}
+.pc-sumar{background:rgba(160,0,200,0.2);color:#C070E2}
+.partido-name{font-size:15px;font-weight:700}
+.partido-pos{font-size:11px;color:var(--muted)}
+.partido-propuesta{font-size:13px;color:var(--text);line-height:1.6;margin-bottom:1rem;padding:10px 12px;background:var(--surface2);border-radius:8px;border-left:2px solid var(--border2)}
+.simplify-btn{font-size:12px;color:var(--accent);background:none;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;display:flex;align-items:center;gap:4px}
+.simplify-btn:hover{opacity:0.7}
+.comparador-header{text-align:center;padding:1.5rem 0;border-bottom:1px solid var(--border);margin-bottom:2rem}
+.comparador-header h2{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:900;letter-spacing:-1px;margin-bottom:.4rem}
+.comparador-header p{font-size:13px;color:var(--muted)}
+.comp-selectors{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;margin-bottom:1.5rem}
+.comp-select{width:100%;background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:10px 14px;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;outline:none;cursor:pointer}
+.comp-select option{background:#1E1E1E}
+.vs-circle{width:44px;height:44px;border-radius:50%;background:var(--surface2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--muted);margin:0 auto}
+.compare-btn{display:block;width:100%;background:var(--accent);color:#0D0D0D;padding:12px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;border:none;font-family:'Plus Jakarta Sans',sans-serif;margin-bottom:1.5rem}
+.comp-result{display:none;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.comp-result.show{display:block}
+.comp-row{display:grid;grid-template-columns:1fr 80px 1fr;align-items:stretch}
+.comp-row-header{background:var(--surface2);padding:10px;text-align:center;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.comp-cell{padding:1rem;font-size:13px;line-height:1.6;border-top:1px solid var(--border)}
+.comp-cell.left{text-align:right;color:var(--blue)}
+.comp-cell.right{color:var(--red)}
+.comp-cell.center{text-align:center;font-size:11px;font-weight:600;color:var(--muted);display:flex;align-items:center;justify-content:center;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+.debate-header{text-align:center;padding:1.5rem 0;border-bottom:1px solid var(--border);margin-bottom:2rem}
+.debate-header h2{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:900;letter-spacing:-1px;margin-bottom:.4rem}
+.debate-header p{font-size:13px;color:var(--muted)}
+.debate-question-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.debate-q{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;line-height:1.3;margin-bottom:1.5rem;letter-spacing:-0.3px}
+.debate-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1rem}
+.dopt{border:1.5px solid var(--border2);border-radius:12px;padding:1rem 1.25rem;cursor:pointer;font-size:13px;font-weight:500;background:transparent;font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);text-align:left;line-height:1.5;transition:all .2s}
+.dopt:hover{background:var(--surface2)}
+.dopt.voted-a{border-color:var(--accent);background:var(--accent-dim);color:var(--accent)}
+.dopt.voted-b{border-color:var(--blue);background:rgba(107,164,255,0.1);color:var(--blue)}
+.debate-bars{margin-top:1rem}
+.dbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.dbar-label{font-size:12px;color:var(--muted);width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dbar-track{flex:1;height:6px;background:var(--surface2);border-radius:100px;overflow:hidden}
+.dbar-fill{height:100%;border-radius:100px;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.dbar-fill.a{background:var(--accent)}
+.dbar-fill.b{background:var(--blue)}
+.dbar-pct{font-size:12px;font-weight:600;width:30px;text-align:right}
+.debate-learn{margin-top:1rem;font-size:13px;color:var(--muted);padding-top:1rem;border-top:1px solid var(--border)}
+.debate-learn a{color:var(--accent);text-decoration:none;font-weight:500;cursor:pointer}
+.past-debates{display:flex;flex-direction:column;gap:10px}
+.past-debate-item{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:border-color .2s;flex-wrap:wrap;gap:8px}
+.past-debate-item:hover{border-color:var(--border2)}
+.pdi-q{font-size:13px;font-weight:500;flex:1}
+.pdi-stats{display:flex;gap:8px;font-size:12px;color:var(--muted);align-items:center}
+footer{padding:2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:2rem}
+.footer-logo{font-family:'Fraunces',serif;font-weight:900;font-size:1.1rem}
+.footer-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.tiktok-pill{background:var(--surface2);border:1px solid var(--border2);color:var(--text);padding:5px 14px;border-radius:100px;font-size:12px;font-weight:500;display:flex;align-items:center;gap:6px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><span class="logo-dot"></span>PuntoNeutro<span style="color:var(--accent)">.es</span></div>
+  <ul class="nav-links">
+    <li><a onclick="showPanel('inicio')">Noticias</a></li>
+    <li><a onclick="showPanel('partidos')">Partidos</a></li>
+    <li><a onclick="showPanel('comparador')">Comparador</a></li>
+    <li><a onclick="showPanel('debate')">Debate</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="badge-live"><span class="dot-live"></span>En vivo</div>
+    <button class="btn-nav" onclick="showPanel('inicio')">Explorar</button>
+  </div>
+</nav>
+
+<div class="tabs">
+  <button class="tab active" onclick="showPanel('inicio')">🏠 Inicio</button>
+  <button class="tab" onclick="showPanel('partidos')">🗳️ ¿Qué propone cada partido?</button>
+  <button class="tab" onclick="showPanel('comparador')">⚖️ Comparador</button>
+  <button class="tab" onclick="showPanel('debate')">💬 Debate de la semana</button>
+</div>
+
+<!-- INICIO -->
+<div class="panel active" id="panel-inicio">
+  <div class="hero-grid">
+    <div class="hero-main">
+      <div class="hero-eyebrow">Información política sin humo</div>
+      <h1>Entiende qué<br>pasa <em>de verdad</em>.</h1>
+      <p class="hero-desc">Buscamos noticias y propuestas políticas reales y te las explicamos como si fuera tu amigo que estudió esto. Sin sesgos. Sin decirte qué pensar.</p>
+      <div class="search-bar">
+        <input class="search-input" id="searchInput" type="text" placeholder="Ej: ¿Qué propone el PP sobre la vivienda?">
+        <button class="btn-search" onclick="doSearch()">Buscar ✦</button>
+      </div>
+      <div style="margin-bottom:0.75rem;font-size:12px;color:var(--muted)">Explícamelo como si tuviera...</div>
+      <div class="level-select">
+        <button class="level-btn active" onclick="setLevel(this,'16')">16 años</button>
+        <button class="level-btn" onclick="setLevel(this,'20')">20 años</button>
+        <button class="level-btn" onclick="setLevel(this,'adulto')">Adulto</button>
+        <button class="level-btn" onclick="setLevel(this,'experto')">Experto</button>
+      </div>
+    </div>
+    <div class="hero-side">
+      <div class="trending-box">
+        <div class="box-label">🔥 Lo más buscado hoy</div>
+        <div class="trend-item" onclick="quickSearch('Ley de vivienda 2025 España')">
+          <span class="trend-num">1</span><span class="trend-text">Ley de vivienda 2025</span><span class="trend-tag t-hot">Caliente</span>
+        </div>
+        <div class="trend-item" onclick="quickSearch('Pensiones y jubilación España jóvenes')">
+          <span class="trend-num">2</span><span class="trend-text">Pensiones y jubilación</span><span class="trend-tag t-new">Nuevo</span>
+        </div>
+        <div class="trend-item" onclick="quickSearch('Impuesto a grandes fortunas España partidos')">
+          <span class="trend-num">3</span><span class="trend-text">Impuesto a grandes fortunas</span><span class="trend-tag t-hot">Caliente</span>
+        </div>
+        <div class="trend-item" onclick="quickSearch('Inmigración y empleo España 2025')">
+          <span class="trend-num">4</span><span class="trend-text">Inmigración y empleo</span><span class="trend-tag t-new">Nuevo</span>
+        </div>
+        <div class="trend-item" onclick="quickSearch('Energías renovables España política partidos')">
+          <span class="trend-num">5</span><span class="trend-text">Energías renovables</span><span class="trend-tag t-new">Nuevo</span>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-num">100%</div><div class="stat-label">Sin partido favorito</div></div>
+        <div class="stat-box"><div class="stat-num">6</div><div class="stat-label">Grandes temas</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-result" id="aiResult">
+    <div class="ai-header">
+      <div class="ai-icon">✦</div>
+      <div><div class="ai-title" id="aiTitle">Explicación</div><div class="ai-subtitle">Adaptada a tu nivel · Fuentes reales · Sin sesgo</div></div>
+    </div>
+    <div class="level-tag" id="levelTag">👤 Nivel: 16 años</div>
+    <div class="ai-content" id="aiContent"></div>
+  </div>
+
+  <div class="noticias-section" style="margin-top:2rem">
+    <div class="section-header">
+      <div class="section-title">Noticias explicadas esta semana</div>
+    </div>
+    <div class="noticias-grid">
+      <div class="noticia-card" onclick="quickSearch('Ley de vivienda control de alquileres España 2025 partidos')">
+        <span class="card-arrow">↗</span>
+        <div class="nc-tag nc-vivienda">🏠 Vivienda</div>
+        <h4>El Gobierno aprueba medidas de control del alquiler. ¿Funcionará?</h4>
+        <div class="noticia-meta"><span>Hace 2h</span><span class="meta-dot"></span><span>3 min lectura</span></div>
+        <div class="simplified-badge">✦ Haz clic para explicación neutral</div>
+      </div>
+      <div class="noticia-card" onclick="quickSearch('Reforma pensiones España 2025 cobrarán jóvenes')">
+        <span class="card-arrow">↗</span>
+        <div class="nc-tag nc-economia">💸 Economía</div>
+        <h4>La reforma de pensiones: ¿cobrarás cuando te jubiles tú?</h4>
+        <div class="noticia-meta"><span>Hace 5h</span><span class="meta-dot"></span><span>4 min lectura</span></div>
+        <div class="simplified-badge">✦ Haz clic para explicación neutral</div>
+      </div>
+      <div class="noticia-card" onclick="quickSearch('Pacto migratorio europeo España 2025 qué significa')">
+        <span class="card-arrow">↗</span>
+        <div class="nc-tag nc-politica">🗳️ Política</div>
+        <h4>El pacto migratorio europeo: qué cambia y qué opina cada partido</h4>
+        <div class="noticia-meta"><span>Hace 1d</span><span class="meta-dot"></span><span>5 min lectura</span></div>
+        <div class="simplified-badge">✦ Haz clic para explicación neutral</div>
+      </div>
+      <div class="noticia-card" onclick="quickSearch('Energía nuclear España debate partidos 2025 pros contras')">
+        <span class="card-arrow">↗</span>
+        <div class="nc-tag nc-clima">🌿 Clima</div>
+        <h4>¿Debería España mantener las nucleares? El debate que divide</h4>
+        <div class="noticia-meta"><span>Hace 2d</span><span class="meta-dot"></span><span>4 min lectura</span></div>
+        <div class="simplified-badge">✦ Haz clic para explicación neutral</div>
+      </div>
+      <div class="noticia-card" onclick="quickSearch('Sanidad pública España listas espera 2025 qué proponen partidos')">
+        <span class="card-arrow">↗</span>
+        <div class="nc-tag nc-sanidad">👩‍⚕️ Sanidad</div>
+        <h4>Listas de espera en sanidad: ¿qué proponen los partidos?</h4>
+        <div class="noticia-meta"><span>Hace 2d</span><span class="meta-dot"></span><span>3 min lectura</span></div>
+        <div class="simplified-badge">✦ Haz clic para explicación neutral</div>
+      </div>
+      <div class="noticia-card" onclick="quickSearch('Impuesto grandes fortunas patrimonio España quién paga cuánto')">
+        <span class="card-arrow">↗</span>
+        <div class="nc-tag nc-economia">💸 Economía</div>
+        <h4>Impuesto a las grandes fortunas: ¿quién lo paga y cuánto recauda?</h4>
+        <div class="noticia-meta"><span>Hace 3d</span><span class="meta-dot"></span><span>5 min lectura</span></div>
+        <div class="simplified-badge">✦ Haz clic para explicación neutral</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PARTIDOS -->
+<div class="panel" id="panel-partidos">
+  <div class="partidos-intro">
+    <h2>¿Qué propone cada partido?</h2>
+    <p>Las propuestas reales de cada partido explicadas sin jerga. Elige un tema y compara.</p>
+  </div>
+  <div class="partidos-topic-select">
+    <button class="topic-pill active" onclick="setTopic(this,'vivienda')">🏠 Vivienda</button>
+    <button class="topic-pill" onclick="setTopic(this,'economia')">💸 Economía</button>
+    <button class="topic-pill" onclick="setTopic(this,'clima')">🌿 Clima</button>
+    <button class="topic-pill" onclick="setTopic(this,'sanidad')">👩‍⚕️ Sanidad</button>
+    <button class="topic-pill" onclick="setTopic(this,'educacion')">🎓 Educación</button>
+    <button class="topic-pill" onclick="setTopic(this,'inmigracion')">🌍 Inmigración</button>
+  </div>
+  <div class="partidos-grid" id="partidosGrid"></div>
+</div>
+
+<!-- COMPARADOR -->
+<div class="panel" id="panel-comparador">
+  <div class="comparador-header">
+    <h2>Comparador de partidos</h2>
+    <p>Elige dos partidos y un tema. Te mostramos qué propone cada uno, sin filtros.</p>
+  </div>
+  <div class="comp-selectors">
+    <select class="comp-select" id="compA">
+      <option value="PP">PP</option><option value="PSOE">PSOE</option><option value="Vox">Vox</option><option value="Sumar">Sumar</option><option value="Podemos">Podemos</option>
+    </select>
+    <div class="vs-circle">VS</div>
+    <select class="comp-select" id="compB">
+      <option value="PSOE">PSOE</option><option value="PP">PP</option><option value="Vox">Vox</option><option value="Sumar">Sumar</option><option value="Podemos">Podemos</option>
+    </select>
+  </div>
+  <div style="margin-bottom:1.5rem">
+    <div style="font-size:12px;color:var(--muted);margin-bottom:8px">Sobre qué tema:</div>
+    <div class="partidos-topic-select" style="justify-content:flex-start">
+      <button class="topic-pill active" onclick="setCompTopic(this,'vivienda')">🏠 Vivienda</button>
+      <button class="topic-pill" onclick="setCompTopic(this,'economia')">💸 Economía</button>
+      <button class="topic-pill" onclick="setCompTopic(this,'clima')">🌿 Clima</button>
+      <button class="topic-pill" onclick="setCompTopic(this,'sanidad')">👩‍⚕️ Sanidad</button>
+      <button class="topic-pill" onclick="setCompTopic(this,'educacion')">🎓 Educación</button>
+      <button class="topic-pill" onclick="setCompTopic(this,'inmigracion')">🌍 Inmigración</button>
+    </div>
+  </div>
+  <button class="compare-btn" onclick="doCompare()">✦ Comparar ahora</button>
+  <div class="comp-result" id="compResult">
+    <div class="comp-row" style="background:var(--surface2)">
+      <div class="comp-row-header" id="compHeaderA">PP</div>
+      <div class="comp-row-header">Tema</div>
+      <div class="comp-row-header" id="compHeaderB">PSOE</div>
+    </div>
+    <div id="compRows"></div>
+  </div>
+</div>
+
+<!-- DEBATE -->
+<div class="panel" id="panel-debate">
+  <div class="debate-header">
+    <h2>Debate de la semana</h2>
+    <p>Una pregunta, tu opinión, cero juicios. Vota y ve qué piensa la comunidad.</p>
+  </div>
+  <div class="debate-question-box">
+    <div class="debate-q">¿Crees que España debería limitar el precio de los alquileres aunque eso reduzca la oferta de pisos?</div>
+    <div class="debate-opts">
+      <button class="dopt" id="doptA" onclick="castVote('A')">✅ Sí — Los alquileres están desbocados y hay que proteger a los que no pueden pagar</button>
+      <button class="dopt" id="doptB" onclick="castVote('B')">🚫 No — Limitar precios reduce la oferta y acaba siendo peor para todos</button>
+    </div>
+    <div class="debate-bars" id="debateBars" style="display:none">
+      <div class="dbar-row">
+        <span class="dbar-label">Sí, regular precios</span>
+        <div class="dbar-track"><div class="dbar-fill a" id="dbarA" style="width:0%"></div></div>
+        <span class="dbar-pct" id="dpctA">0%</span>
+      </div>
+      <div class="dbar-row">
+        <span class="dbar-label">No, libre mercado</span>
+        <div class="dbar-track"><div class="dbar-fill b" id="dbarB" style="width:0%"></div></div>
+        <span class="dbar-pct" id="dpctB">0%</span>
+      </div>
+      <div class="debate-learn">📖 ¿Quieres entenderlo mejor? <a onclick="showPanel('inicio');quickSearch('control de alquileres España qué dicen los expertos pros y contras')">Lee la explicación neutral →</a></div>
+    </div>
+  </div>
+  <div class="section-header"><div class="section-title">Debates anteriores</div></div>
+  <div class="past-debates">
+    <div class="past-debate-item"><span class="pdi-q">¿Deberían pagar más impuestos quienes ganan más de 100.000€ al año?</span><div class="pdi-stats"><span>12.4K votos</span><span style="color:var(--accent)">63% Sí</span></div></div>
+    <div class="past-debate-item"><span class="pdi-q">¿España debería mantener las centrales nucleares en funcionamiento?</span><div class="pdi-stats"><span>9.8K votos</span><span style="color:var(--blue)">51% No</span></div></div>
+    <div class="past-debate-item"><span class="pdi-q">¿Las redes sociales deberían estar reguladas por el Estado?</span><div class="pdi-stats"><span>8.1K votos</span><span style="color:var(--accent)">57% Sí</span></div></div>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <div class="footer-logo">PuntoNeutro.es</div>
+    <div class="footer-sub">Sin partido. Sin agenda. Solo hechos.</div>
+  </div>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+    <div class="tiktok-pill">📱 @PuntoNeutro</div>
+    <span style="font-size:12px;color:var(--muted2)">Privacidad · Contacto · Fuentes</span>
+  </div>
+</footer>
+
+<script>
+// ══ CONFIGURACIÓN ══
+// 👇 AQUÍ PEGAS TU CLAVE DE API DE ANTHROPIC (ver instrucciones)
+const ANTHROPIC_API_KEY = 'TU_CLAVE_AQUI';
+
+// ══ ESTADO ══
+let currentLevel = '16';
+let currentTopic = 'vivienda';
+let currentCompTopic = 'vivienda';
+let debateVoted = false;
+
+// ══ NAVEGACIÓN ══
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  const map = {inicio:0, partidos:1, comparador:2, debate:3};
+  if (map[id] !== undefined) document.querySelectorAll('.tab')[map[id]].classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ══ NIVEL DE LECTURA ══
+function setLevel(btn, level) {
+  document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentLevel = level;
+}
+
+// ══ BÚSQUEDA RÁPIDA ══
+function quickSearch(q) {
+  showPanel('inicio');
+  document.getElementById('searchInput').value = q;
+  doSearch();
+}
+
+// ══ BÚSQUEDA CON IA ══
+async function doSearch() {
+  const q = document.getElementById('searchInput').value.trim();
+  if (!q) return;
+
+  const box = document.getElementById('aiResult');
+  const content = document.getElementById('aiContent');
+  const levelTag = document.getElementById('levelTag');
+  const title = document.getElementById('aiTitle');
+
+  const lvlLabels = {'16':'👶 Nivel: 16 años','20':'🧑 Nivel: 20 años','adulto':'👤 Nivel: Adulto','experto':'🎓 Nivel: Experto'};
+  levelTag.textContent = lvlLabels[currentLevel];
+  title.textContent = q;
+  box.classList.add('show');
+  content.innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div>';
+  box.scrollIntoView({behavior:'smooth', block:'nearest'});
+
+  const instrucciones = {
+    '16': 'Explícalo como si tuvieras 16 años y nunca hubieras estudiado política. Usa ejemplos del día a día, frases muy cortas y sin palabras técnicas. Máximo 150 palabras.',
+    '20': 'Explícalo para alguien de unos 20 años. Lenguaje claro, algo de contexto, sin tecnicismos innecesarios. 200 palabras máximo.',
+    'adulto': 'Para un adulto informado. Puedes usar algo de vocabulario técnico si lo explicas. 250 palabras.',
+    'experto': 'Con profundidad, datos y matices. Para alguien con conocimiento político. 300 palabras.'
+  };
+
+  const systemPrompt = `Eres PuntoNeutro, un medio digital español 100% neutral que explica política a jóvenes. NUNCA te posicionas ni dices qué opinar. Siempre presentas todos los puntos de vista de forma equilibrada. Usa la búsqueda web para obtener información real y actual de España. Formatea tu respuesta con etiquetas HTML simples (<p>, <strong> solo para conceptos clave). No uses markdown ni asteriscos. Siempre termina con: <p><strong>📌 Distintas posiciones:</strong> [resume brevemente qué argumenta la izquierda, qué argumenta la derecha, y qué dicen los expertos o estudios]</p>`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+        messages: [{
+          role: 'user',
+          content: `${instrucciones[currentLevel]}\n\nPregunta: ${q}\n\nBusca información actual sobre este tema en España y explícalo de forma completamente neutral, mostrando los distintos puntos de vista sin tomar partido.`
+        }]
+      })
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      if (err.error?.type === 'authentication_error') {
+        content.innerHTML = '<p class="error-msg">⚠️ Falta configurar la clave de API. Sigue las instrucciones del archivo INSTRUCCIONES.txt para añadirla.</p>';
+      } else {
+        content.innerHTML = `<p class="error-msg">Error: ${err.error?.message || 'Inténtalo de nuevo.'}</p>`;
+      }
+      return;
+    }
+
+    const data = await res.json();
+    const text = data.content.filter(b => b.type === 'text').map(b => b.text).join('');
+    content.innerHTML = text || '<p>No se encontró información sobre este tema.</p>';
+  } catch(e) {
+    content.innerHTML = '<p class="error-msg">⚠️ Error de conexión. Comprueba tu internet e inténtalo de nuevo.</p>';
+  }
+}
+
+document.getElementById('searchInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') doSearch();
+});
+
+// ══ PROPUESTAS POR PARTIDO ══
+const propuestas = {
+  vivienda: {
+    PP: {pos:'Centro-derecha', propuesta:'Deducciones fiscales a propietarios que alquilen a jóvenes. Rechazan controlar precios porque creen que reduce la oferta. Impulsan liberar suelo para construir más.', color:'pc-pp', icon:'P'},
+    PSOE: {pos:'Centro-izquierda', propuesta:'Ley de vivienda con límites al alquiler en zonas tensionadas. Más vivienda pública y parques de alquiler asequible gestionados por el Estado.', color:'pc-psoe', icon:'P'},
+    Vox: {pos:'Derecha', propuesta:'Eliminar la Ley de Vivienda actual. Libertad total de mercado. Reducir burocracia para que más propietarios alquilen sin miedo a regulaciones.', color:'pc-vox', icon:'V'},
+    Sumar: {pos:'Izquierda', propuesta:'Control estricto de alquileres en todo el país. Gran parque público de vivienda. Limitar pisos turísticos. Impuesto a la vivienda vacía de grandes propietarios.', color:'pc-sumar', icon:'S'},
+    Podemos: {pos:'Izquierda', propuesta:'Expropiación de viviendas vacías de grandes fondos. Alquiler social masivo garantizado por el Estado. Topar precios de alquiler a nivel nacional.', color:'pc-podemos', icon:'P'},
+  },
+  economia: {
+    PP: {pos:'Centro-derecha', propuesta:'Bajada de impuestos a PYMES y familias. Reducir gasto público para equilibrar las cuentas. Más incentivos a la inversión privada y al emprendimiento.', color:'pc-pp', icon:'P'},
+    PSOE: {pos:'Centro-izquierda', propuesta:'Subida del salario mínimo y las pensiones. Impuesto a grandes fortunas y a la banca. Inversión pública en infraestructuras y digitalización del país.', color:'pc-psoe', icon:'P'},
+    Vox: {pos:'Derecha', propuesta:'Reducción drástica de impuestos para todos. Eliminar ministerios y reducir la administración pública. Privatizar servicios no esenciales. Máxima libertad económica.', color:'pc-vox', icon:'V'},
+    Sumar: {pos:'Izquierda', propuesta:'Semana laboral de 4 días sin bajar el sueldo. Subir el impuesto a la riqueza. Salario mínimo más alto. Políticas para reducir la brecha entre ricos y pobres.', color:'pc-sumar', icon:'S'},
+    Podemos: {pos:'Izquierda', propuesta:'Nacionalizar sectores estratégicos como la energía. Renta básica universal para todos. Controlar los precios de productos básicos. Redistribución radical de la riqueza.', color:'pc-podemos', icon:'P'},
+  },
+  clima: {
+    PP: {pos:'Centro-derecha', propuesta:'Transición energética gradual sin comprometer el empleo ni la economía. No cerrar las nucleares hasta tener una alternativa real. El gas como energía de transición.', color:'pc-pp', icon:'P'},
+    PSOE: {pos:'Centro-izquierda', propuesta:'Cierre de centrales nucleares según el calendario previsto. Apuesta fuerte por las energías renovables. Ley de Residuos y economía circular para reducir la contaminación.', color:'pc-psoe', icon:'P'},
+    Vox: {pos:'Derecha', propuesta:'Escepticismo ante las políticas climáticas actuales. Mantener nucleares y combustibles fósiles para garantizar energía barata. Priorizar la soberanía energética sobre los acuerdos internacionales.', color:'pc-vox', icon:'V'},
+    Sumar: {pos:'Izquierda', propuesta:'Transición ecológica urgente. Renovables al 100% antes de 2040. Crear empleo verde. Tasas fuertes a las empresas más contaminantes del país.', color:'pc-sumar', icon:'S'},
+    Podemos: {pos:'Izquierda', propuesta:'Declarar la emergencia climática como prioridad absoluta. Fin de los combustibles fósiles de forma acelerada. Las empresas energéticas contaminantes bajo control público.', color:'pc-podemos', icon:'P'},
+  },
+  sanidad: {
+    PP: {pos:'Centro-derecha', propuesta:'Reforzar la sanidad pública apoyándose también en la privada cuando haga falta. Reducir las listas de espera mediante conciertos con hospitales privados.', color:'pc-pp', icon:'P'},
+    PSOE: {pos:'Centro-izquierda', propuesta:'Más inversión en sanidad pública. Incluir salud mental en la cobertura pública. Revertir los recortes pasados. Contratar más médicos, enfermeros y especialistas.', color:'pc-psoe', icon:'P'},
+    Vox: {pos:'Derecha', propuesta:'La sanidad debe gestionarla cada comunidad autónoma sin que el Estado central interfiera. Fomentar la competencia entre sanidad pública y privada para mejorar la calidad.', color:'pc-vox', icon:'V'},
+    Sumar: {pos:'Izquierda', propuesta:'Sanidad 100% pública sin contratos con clínicas privadas. Salud mental gratuita para todos. Dentista en la sanidad pública. Eliminar cualquier copago.', color:'pc-sumar', icon:'S'},
+    Podemos: {pos:'Izquierda', propuesta:'Fin de la sanidad privada concertada con dinero público. Sistema nacional de salud reforzado. Medicamentos sin patentes para que sean más baratos y accesibles.', color:'pc-podemos', icon:'P'},
+  },
+  educacion: {
+    PP: {pos:'Centro-derecha', propuesta:'Defender la escuela concertada y la libre elección de centro para las familias. Derogar la LOMLOE y volver a una ley más tradicional. Más peso a la historia y cultura española.', color:'pc-pp', icon:'P'},
+    PSOE: {pos:'Centro-izquierda', propuesta:'Reforzar la escuela pública con más recursos y becas. Mantener la LOMLOE como base del sistema educativo. Ampliar la Formación Profesional para acercarla al mercado laboral.', color:'pc-psoe', icon:'P'},
+    Vox: {pos:'Derecha', propuesta:'Cheque escolar: el dinero público sigue al alumno independientemente de si va a un colegio público o privado. Educación en valores tradicionales y patrióticos.', color:'pc-vox', icon:'V'},
+    Sumar: {pos:'Izquierda', propuesta:'Educación de 0 a 3 años universal y gratuita. Fin del dinero público a centros que segregan por sexo o religión. Más recursos para colegios públicos en zonas vulnerables.', color:'pc-sumar', icon:'S'},
+    Podemos: {pos:'Izquierda', propuesta:'Educación pública gratuita de 0 a 18 años. Sin un euro de dinero público a centros privados. Universidad pública accesible para todos sin importar el nivel económico.', color:'pc-podemos', icon:'P'},
+  },
+  inmigracion: {
+    PP: {pos:'Centro-derecha', propuesta:'Control más estricto de la inmigración irregular. Reformar el sistema de acogida para que sea más ordenado. Acuerdos de retorno con los países de origen.', color:'pc-pp', icon:'P'},
+    PSOE: {pos:'Centro-izquierda', propuesta:'Gestión humanitaria de la inmigración. Regularizar a los inmigrantes que trabajan y cotizan en España. Crear más vías legales y ordenadas de acceso al país.', color:'pc-psoe', icon:'P'},
+    Vox: {pos:'Derecha', propuesta:'Reforzar las fronteras en Ceuta y Melilla. Expulsión inmediata de quienes entren de forma irregular. Consideran la inmigración ilegal una amenaza para la seguridad.', color:'pc-vox', icon:'V'},
+    Sumar: {pos:'Izquierda', propuesta:'Regularización masiva de inmigrantes. Acogida digna y recursos para la integración. Combatir la xenofobia. Ver la inmigración como una oportunidad económica y cultural.', color:'pc-sumar', icon:'S'},
+    Podemos: {pos:'Izquierda', propuesta:'Cerrar los Centros de Internamiento de Extranjeros (CIE). Fronteras abiertas para las personas. Plena igualdad de derechos para todos los que viven en España.', color:'pc-podemos', icon:'P'},
+  }
+};
+
+function setTopic(btn, topic) {
+  document.querySelectorAll('#panel-partidos .topic-pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentTopic = topic;
+  renderPartidos();
+}
+
+function renderPartidos() {
+  const grid = document.getElementById('partidosGrid');
+  const data = propuestas[currentTopic];
+  const topicLabels = {vivienda:'vivienda',economia:'economía',clima:'medio ambiente',sanidad:'sanidad',educacion:'educación',inmigracion:'inmigración'};
+  grid.innerHTML = Object.entries(data).map(([name, d]) => `
+    <div class="partido-card">
+      <div class="partido-header">
+        <div class="partido-color ${d.color}">${d.icon}</div>
+        <div><div class="partido-name">${name}</div><div class="partido-pos">${d.pos}</div></div>
+      </div>
+      <div class="partido-propuesta">${d.propuesta}</div>
+      <button class="simplify-btn" onclick="quickSearch('Propuesta de ${name} sobre ${topicLabels[currentTopic]} explicada de forma neutral con datos reales')">✦ Explícamelo más fácil con IA</button>
+    </div>
+  `).join('');
+}
+
+renderPartidos();
+
+// ══ COMPARADOR ══
+function setCompTopic(btn, topic) {
+  document.querySelectorAll('#panel-comparador .topic-pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentCompTopic = topic;
+}
+
+function doCompare() {
+  const a = document.getElementById('compA').value;
+  const b = document.getElementById('compB').value;
+  if (a === b) { alert('Elige dos partidos distintos'); return; }
+  const dataA = propuestas[currentCompTopic]?.[a];
+  const dataB = propuestas[currentCompTopic]?.[b];
+  if (!dataA || !dataB) return;
+  const topicLabel = {vivienda:'🏠 Vivienda',economia:'💸 Economía',clima:'🌿 Clima',sanidad:'👩‍⚕️ Sanidad',educacion:'🎓 Educación',inmigracion:'🌍 Inmigración'}[currentCompTopic];
+  document.getElementById('compHeaderA').textContent = a;
+  document.getElementById('compHeaderB').textContent = b;
+  document.getElementById('compRows').innerHTML = `
+    <div class="comp-row">
+      <div class="comp-cell left">${dataA.propuesta}</div>
+      <div class="comp-cell center">${topicLabel}</div>
+      <div class="comp-cell right">${dataB.propuesta}</div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-cell left" style="color:var(--muted)">${dataA.pos}</div>
+      <div class="comp-cell center">Posición</div>
+      <div class="comp-cell right" style="color:var(--muted)">${dataB.pos}</div>
+    </div>
+  `;
+  document.getElementById('compResult').classList.add('show');
+}
+
+// ══ DEBATE ══
+function castVote(opt) {
+  if (debateVoted) return;
+  debateVoted = true;
+  const baseA = 6842, baseB = 5311;
+  const newA = opt === 'A' ? baseA + 1 : baseA;
+  const newB = opt === 'B' ? baseB + 1 : baseB;
+  const total = newA + newB;
+  const pA = Math.round((newA / total) * 100);
+  const pB = 100 - pA;
+  if (opt === 'A') document.getElementById('doptA').classList.add('voted-a');
+  if (opt === 'B') document.getElementById('doptB').classList.add('voted-b');
+  document.getElementById('debateBars').style.display = 'block';
+  setTimeout(() => {
+    document.getElementById('dbarA').style.width = pA + '%';
+    document.getElementById('dbarB').style.width = pB + '%';
+    document.getElementById('dpctA').textContent = pA + '%';
+    document.getElementById('dpctB').textContent = pB + '%';
+  }, 100);
+}
+</script>
+</body>
+</html>
